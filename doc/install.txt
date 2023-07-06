@@ -1,0 +1,105 @@
+PREREQUISITOS
+El siguiente manual de instalación, requiere de los siguientes paquetes:
+•	Bison
+•	Flex
+•	libreadline5-dev
+•	libjpeg
+•	libpng
+
+En caso de desconocer su existencia en el sistema, puede usarse el manejador de paquetes para realizar una consulta, ya sea realizando los comandos.
+
+Para el caso de sistemas debian y derivados.
+#dpkg –l | grep paquete
+
+Para el caso de sistemas Red Hat/Fedora o que usen RPM.
+#rpm –qa | grep paquete
+
+INSTALACION DE APACHE
+
+Descargar el paquete de instalación de apache de la página oficial (http://httpd.apache.org/) o usar el incluido en el CD de instalación de Suricata en caso de que se disponga, para este caso se usará el paquete httpd-2.2.0.tar.gz, el cual es el disponible al momento de realizar esta documentación y realizar los siguientes comandos.
+
+#tar –zxvf httpd-2.2.0.tar.gz
+#cd httpd-2.2.0
+#./configure –enable-so
+#make
+#make install
+
+Asegurarse de que httpd.conf contiene las directivas:
+
+AddCharset UTF-8       .utf8
+AddCharset utf-8       .utf8
+
+y las directivas Charset apropiadas de su idioma
+
+
+INSTALACION DE POSTGRESQL
+
+Descargar el paquete de instalación de postgres de la página oficial (http://www.postgresql.org/) o usar el incluido en el CD de instalación de Suricata en caso de que se disponga, para este caso se usará el paquete postgresql-8.1.0.tar.gz, el cual es el disponible al momento de realizar esta documentación y realizar los siguientes comandos.
+
+#tar –zxvf postgresql-8.1.0.tar.gz
+#cd postgresql-8.1.0
+#./configure
+#gmake
+#gmake install
+#adduser postgres
+# mkdir /usr/local/pgsql/data
+# chown postgres /usr/local/pgsql/data
+#su - postgres
+#/usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data
+#/usr/local/pgsql/bin/postmaster -D /usr/local/pgsql/data >logfile 2>&1 &
+#/usr/local/pgsql/bin/createdb test
+#/usr/local/pgsql/bin/psql test
+
+Hasta ahora, se ha compilado, instalado, levantado el demonio postmaster, creado una base de datos de prueba y conectado a ella, posteriormente se generará la base de datos de Suricata en su respectiva sección.
+
+INSTALACION DE GD Y PHP
+
+Obtener los paquetes de instalación de  GD y PHP de sus respectivas paginas web (http://www.boutell.com/gd/ y www.php.net) o usar el incluido en el CD de instalación de Suricata en caso de que se disponga, para este caso se usaran los paquetes gd-2.0.1.tar.gz y php-5.1.1.tar.gz, el cual es el disponible al momento de realizar esta documentación y realizar los siguientes comandos.
+
+Para GD.
+# tar zxvf gd-2.0.1.tar.gz
+# cd gd-2.0.1
+#make
+#make install
+
+Para PHP.
+# ./configure --with-apxs2=/usr/local/apache2/bin/apxs --with-pgsql --enable-gd-native-ttf --enable-gd-imgstrttf --with-gd --with-jpeg-dir=/usr/lib --with-zlib-dir=/usr/lib
+#make
+#make install
+
+
+Para PEAR.
+
+PEAR, es un repositorio de PHP opcional, y que se instala automáticamente con el paquete, Suricata necesita algunas librerías de este repositorio, las cuales se enlistan a continuación.
+
+Archive_Tar
+Auth
+Auth_HTTP
+Console_Getopt
+DB
+PEAR
+
+La instalación de cada uno de los paquetes se realiza a través de la línea de comandos, invocando a pear de la siguiente forma:
+
+#pear install paquete
+
+Donde paquete, es el paquete que se desea instalar en el sistema.
+
+INSTALACION DE SURICATA.
+
+Suricata debe estar disponible en un directorio que sea publicado por apache, por default se utiliza el directorio /usr/local/apache2/htdocs , sin embargo este puede variar dependiendo de la instalación, para lo cual se recomienda leer el archivo de configuración de apache (httpd.conf) en su sección de DocumentRoot.
+
+Es necesario copiar el paquete Suricata.1.0.tar.gz en el directorio de publicación de apache y realizar los siguientes comandos:
+
+#tar –zxvf Suricata.1.0.tar.gz
+
+Generación de la base de datos.
+
+Entrar como el usuario postgres
+#su – postgres
+
+crear el usuario suricata
+$createuser suricata
+
+Generar la base de datos mediante el archivo suricata.sql que se encuentra en el directorio DB mediante psql.
+#psql -U suricata < suricata.sql

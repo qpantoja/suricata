@@ -1,0 +1,47 @@
+BODY {
+	background-color: #fff;
+	margin-top: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 10px;
+	font-family: verdana,Sans-Serif;
+	font-size: 10pt;
+}
+
+a
+{
+    color: #CC9933;
+}
+
+
+input{
+  background: #CC9933;
+  border: solid #000 1px;
+  font-family: verdana,Sans-Serif;
+}
+
+table.std {
+	border: solid #000 1px;
+	background: #CC9933;
+    color: #000;
+    width: 450px;
+    font-size: 10pt;
+}
+
+tr.std {
+    border: solid #000 1px;
+	background: #865320;
+	color: #fff;
+	font-size: 10pt;
+}
+
+h1
+{color: #865320;}
+
+h2
+{color: #CC9933;}
+
+h3
+{color: #CC9933;}
+
+

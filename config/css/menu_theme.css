@@ -1,0 +1,66 @@
+/*  ThemeMiniBlackMenu Style Sheet  modified for Suricata's menu*/
+
+.ThemeMiniBlackMenu,.ThemeMiniBlackSubMenuTable
+{
+	font-family:	verdana, sans-serif;
+	font-size:	10pt;
+	color:		black;
+	background-color:	#CC9933;
+	padding:	0;
+	/*border: 1;*/
+	cursor:		default;
+  border-style: solid;
+  border-color: black;
+  border-width: thin;
+}
+
+.ThemeMiniBlackSubMenu
+{
+	position: absolute;
+	visibility: hidden;
+	z-index:        100;
+	border:		0;
+	padding:	0;
+}
+
+.ThemeMiniBlackSubMenuTable
+{
+	border-top:	1px solid black;
+}
+
+.ThemeMiniBlackSubMenuTable TD
+{
+	white-space:	nowrap;
+}
+
+.ThemeMiniBlackMainItem,.ThemeMiniBlackMainItemHover,.ThemeMiniBlackMainItemActive,
+.ThemeMiniBlackMenuItem,.ThemeMiniBlackMenuItemHover,.ThemeMiniBlackMenuItemActive
+{
+	white-space:	nowrap;
+}
+
+.ThemeMiniBlackMainItemHover,.ThemeMiniBlackMainItemActive,
+.ThemeMiniBlackMenuItemHover,.ThemeMiniBlackMenuItemActive
+{
+	color:		white;
+	background-color:	#865320;
+}
+
+.ThemeMiniBlackMenuSplit
+{
+	height:		1px;
+	margin-top:	1px;
+	margin-bottom:	1px;
+	overflow:	hidden;
+	background-color:	inherit;
+	border-top:	1px solid black;
+}
+
+.ThemeMiniBlackMenuVSplit
+{
+	width:		1px;
+	margin:		0px;
+	overflow:	hidden;
+	background-color:	inherit;
+	border-right:	1px solid black;
+}
